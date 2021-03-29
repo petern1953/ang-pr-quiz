@@ -7,14 +7,14 @@
 - A teacher új quiz-eket tud létrehozni és azokat szerkeszteni.
 - A student ki tudja tölteni a quiz-t, és értékelést kap róla.
 - Egyenlőre nem szükséges azonosítás az alkalmazásba.
-- A megjelenéshez használj Bootstrap és Font-Awesome keretrendszereket.
+- ok A megjelenéshez használj Bootstrap és Font-Awesome keretrendszereket.
 ​
 ## Az alkalmazás részei
 ### Classes
-1. Student: id, name, email, points, active
-1. Answer: id, content, correct:Boolean
-1. Question: id, question, answers<Answer[]>, points, active
-1. Quiz: id, title, description, questions<Question[]>, active
+1. ok Student: id, name, email, points, active
+1. ok Answer: id, content, correct:Boolean
+1. ok Question: id, question, answers<Answer[]>, points, active
+1. o Quiz: id, title, description, questions<Question[]>, active
 ​
 ### Services
 1. StudentService: a tanulók adatait szolgáltatja, CRUD műveleteket ismeri.
