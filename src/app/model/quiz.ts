@@ -4,7 +4,7 @@ export class Quiz {
   id: number = 0;
   title: string = '';
   description: string = '';
-  questions: Question[] = [];
+  questions: number[] = [];
   active: boolean = true;
 
   constructor(

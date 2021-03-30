@@ -1,0 +1,80 @@
+{
+  "students":
+    [
+      { "id": 1, "name": "NPA", "email": "petern@chello.hu", "points": 0, "active": true }
+    ],
+  "quizes":
+    [
+      { "id": 1, "title": "JS", "description": "Array methods",
+        "questions": [1,2,3,4],
+        "active": true
+      }
+    ],
+  "questions":
+    [
+      {"id": 1,
+        "question":
+        "Melyik állítás igaz a NoSQL adatbázisokra?<br><br>Válaszd ki az EGYETLEN megfelelő választ!",
+        "answers": [
+          {"id": 1, "content": "Drága az üzemeltetése",
+            "correct": false},
+          {"id": 2, "content": "Összetett lekérdezések időigényesek",
+            "correct": false},
+          {"id": 3, "content": "Csak egy, választható típusú adatmodellt használhatunk",
+            "correct": false},
+          {"id": 4, "content": "Egy dokumentumhoz bármikor hozzáadhatok új tulajdonságot, függetlenül a többitől",
+            "correct": true}
+          ],
+        "points": 1,
+        "active": true
+      },
+      {"id": 2,
+        "question":
+        "Mi lesz a konzolon az alábbi kód lefutása után, ha minden async hívás is véget ért?<br><br>&emsp; const thenable = {<br>&emsp; &emsp; age: 30,<br>&emsp; &emsp; then(resolve, reject) {<br>&emsp; &emsp; &emsp; setTimeout(() => resolve(this.age * 2), 1000)<br>&emsp; &emsp; }<br>&emsp; };<br><br>&emsp; async function f() {<br>&emsp; &emsp; const result = await thenable;<br>&emsp; &emsp; console.log(result)<br>&emsp; }<br><br>&emsp; f();<br><br>Válaszd ki az EGYETLEN megfelelő választ!",
+        "answers": [
+          {"id": 1, "content": "Error",
+            "correct": false},
+          {"id": 2, "content": "60",
+            "correct": true},
+          {"id": 3, "content": "Promise",
+            "correct": false},
+          {"id": 4, "content": "ƒ Function() { [native code] }",
+            "correct": false}
+          ],
+        "points": 1,
+        "active": true
+      },
+      {"id": 3,
+        "question":
+        "Mi lesz a this értéke a függvényen belül, amikor meghívjuk? (A globális környezetben vagyunk)<br><br>&emsp; \"use strict\";<br><br>&emsp; function myFunction() {<br>&emsp; &emsp; return this;<br>&emsp; }<br><br>&emsp; myFunction();<br><br>Válaszd ki az EGYETLEN megfelelő választ!",
+        "answers": [
+          {"id": 1, "content": "A function",
+            "correct": false},
+          {"id": 2, "content": "A Window object",
+            "correct": false},
+          {"id": 3, "content": "null",
+            "correct": false},
+          {"id": 4, "content": "undefined",
+            "correct": true}
+          ],
+        "points": 1,
+        "active": true
+      },
+      {"id": 4,
+        "question":
+        "Mi lesz a konzolon, miután rákattintok a gombra? (A gomb a DOM része)<br><br>&emsp; document.body.insertAdjacentHTML(<br>&emsp; &emsp; \"afterend\", <br>&emsp; &emsp; \"<<span style=\"font-size: 0rem;\"> </span>button onclick=\"console.log(this)\">Click me<<span style=\"font-size: 0rem;\"> </span>/button>\"<br>&emsp; );<br><br>Válaszd ki az EGYETLEN megfelelő választ!",
+        "answers": [
+          {"id": 1, "content": "A Window object",
+            "correct": false},
+          {"id": 2, "content": "A Button element",
+            "correct": true},
+          {"id": 3, "content": "Az Event object",
+            "correct": false},
+          {"id": 4, "content": "undefined",
+            "correct": false}
+          ],
+        "points": 1,
+        "active": true
+      }
+    ]
+}

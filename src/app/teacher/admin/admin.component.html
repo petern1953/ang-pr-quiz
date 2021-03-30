@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="text-center">Admin page</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Questions</th>
+          <th>Active</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let quiz of quizes">
+          <td>{{quiz.id}}</td>
+          <td>{{quiz.title}}</td>
+          <td>{{quiz.description}}</td>
+          <td>{{ questions(quiz) }}
+          <td>{{quiz.active}}</td>
+          <td>
+            <div style="width: 10px;" class="btn-group text-right">
+              <button [routerLink]="[]" class="btn btn-info">
+                <i class="fa fa-pencil"></i>
+              </button>
+              <button class="btn btn-danger">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
