@@ -16,6 +16,8 @@ export class QuizeditorComponent implements OnInit {
   // quizes$: Observable<Quiz[]> = this.quizService.getAll();
 
   selectedQuiz: Quiz = new Quiz();
+  questions: number[] = [];
+  questions$: Question[] = [];
 
   constructor(
     private quizService: QuizService,
@@ -23,7 +25,23 @@ export class QuizeditorComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) =>
+      this.quizService.get(params.id).subscribe((quiz) => {
+        console.log(quiz);
+        this.selectedQuiz = quiz;
+        let i = 0;
+        this.selectedQuiz.questions
+          .forEach((question) => {
+            this.questionService.get(question).subscribe((question) =>
+            {
+              this.questions$[i++] = question;
+              // console.log(this.questions$);
+            })
+          });
+      })
+    );
+  }
 
   quiz$: Observable<Quiz> = this.activatedRoute.params.pipe(
     switchMap((params) => {

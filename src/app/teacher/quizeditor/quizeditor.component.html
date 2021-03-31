@@ -31,6 +31,9 @@
         </div>
         <div class="form-group">
           <label>Questions</label>
+          <div>
+            <button class="btn btn-success btn-block">new question</button>
+          </div>
           <table>
             <thead>
               <tr>
@@ -40,11 +43,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let question of selectedQuiz.questions">
-                <td>{{selectedQuiz.questions[selectedQuiz.questions.indexOf(question)]}}</td>
-                <td>{{'question text'}}</td>
+              <!-- <tr *ngFor="let question of selectedQuiz.questions"> -->
+              <tr *ngFor="let q of selectedQuiz.questions as sq">
+                <td>{{sq[sq.indexOf(q)]}}</td>
+                <td class="w-100">{{questions$[sq.indexOf(q)]?.question}}</td>
                 <td>
-                    <button class="btn btn-success">new question</button>
+                  <div class="btn-group w-100">
+                    <button class="btn btn-info">
+                      <i class="fa fa-refresh"></i>
+                    </button>
+                    <button class="btn btn-danger">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
             </tbody>
