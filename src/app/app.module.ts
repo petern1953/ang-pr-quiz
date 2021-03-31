@@ -14,6 +14,7 @@ import { HomeComponent } from './student/home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
+import { QuestionComponent } from './gadget/question/question.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,7 @@ const routes: Routes = [
     NavigationComponent,
     FilterPipe,
     SorterPipe,
+    QuestionComponent,
   ],
   imports: [
     BrowserModule,

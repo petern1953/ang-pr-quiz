@@ -34,6 +34,7 @@
           <td>{{quiz.description}}</td>
           <!-- <td>{{ questions(quiz) }} -->
           <td>{{ quiz.questions.join(', ') }}
+            <app-question [questions]="quiz.questions"></app-question>
           <td>{{quiz.active}}</td>
           <td>
             <div style="position: relative; left: 10px;" class="btn-group text-right">
