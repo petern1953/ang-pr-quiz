@@ -10,6 +10,8 @@ import { QuestioneditorComponent } from './teacher/questioneditor/questioneditor
 import { QuizComponent } from './student/quiz/quiz.component';
 import { HomeComponent } from './student/home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { FilterPipe } from './pipe/filter.pipe';
+import { SorterPipe } from './pipe/sorter.pipe';
 
 const routes: Routes = [
   {
@@ -25,11 +27,11 @@ const routes: Routes = [
     component: AdminComponent,
   },
   {
-    path: 'admin/quizeditor',
+    path: 'admin/quizeditor/:id',
     component: QuizeditorComponent,
   },
   {
-    path: 'admin/questioneditor',
+    path: 'admin/questioneditor/:id',
     component: QuestioneditorComponent,
   },
   {
@@ -47,6 +49,8 @@ const routes: Routes = [
     QuizComponent,
     HomeComponent,
     NavigationComponent,
+    FilterPipe,
+    SorterPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
