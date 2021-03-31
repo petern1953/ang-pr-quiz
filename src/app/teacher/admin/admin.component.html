@@ -2,8 +2,13 @@
   <div class="col-12">
     <h1 class="text-center">Admin page</h1>
   </div>
-  <div class="col-4 offset-8 px-0 mt-3 mb-0">
+  <!-- <div class="col-4 offset-8 px-0 mt-3 mb-0">
     <input (keyup)="onChangePhrase($event)" class="form-control" type="text" placeholder="Search..." />
+  </div> -->
+    <div class="col-3 offset-9 mt-0 mb-3 pr-0">
+    <input [formControl]="phraseControl" type="text" class="form-control ml-0"
+       placeholder="to filter type in filter criteria"
+       >
   </div>
   <div class="col-12 px-0 my-3 mb-3">
       <button class="btn btn-success btn-block" [routerLink]="['quizeditor/0']">
@@ -27,7 +32,8 @@
           <td>{{quiz.id}}</td>
           <td>{{quiz.title}}</td>
           <td>{{quiz.description}}</td>
-          <td>{{ questions(quiz) }}
+          <!-- <td>{{ questions(quiz) }} -->
+          <td>{{ quiz.questions.join(', ') }}
           <td>{{quiz.active}}</td>
           <td>
             <div style="position: relative; left: 10px;" class="btn-group text-right">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from 'src/app/model/quiz';
 import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin',
@@ -28,12 +29,6 @@ export class AdminComponent implements OnInit {
       description:
         'Szövegek, számok és a Math objektum, dátumok, adatok átstrukturálása',
       questions: [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
         11,
         12,
         13,
@@ -46,6 +41,12 @@ export class AdminComponent implements OnInit {
         24,
         25,
         26,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
       ],
       active: true,
     },
@@ -60,20 +61,28 @@ export class AdminComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
-
-  questions(q: Quiz): string {
-    this.quests = '';
-    if (q.questions.length) {
-      this.quests += q.questions[0];
-      for (let i = 1; i < q.questions.length; i++) {
-        this.quests = this.quests + ', ' + q.questions[i];
-      }
-    }
-    return this.quests;
+  ngOnInit(): void {
+    this.phraseControl.valueChanges
+      .pipe(debounceTime(800))
+      .subscribe((newValue) => (this.phrase = newValue));
   }
+  // 1st way
+  // questions(q: Quiz): string {
+  //   this.quests = '';
+  //   if (q.questions.length) {
+  //     this.quests += q.questions[0];
+  //     for (let i = 1; i < q.questions.length; i++) {
+  //       this.quests = this.quests + ', ' + q.questions[i];
+  //     }
+  //   }
+  //   return this.quests;
+  // }
+  // 2nd (simpler) way
+  // questions(q: Quiz): string {
+  //   return q.questions.join(', ');
+  // }
 
-  onChangePhrase(event: any): void {
-    this.phrase = (event.target as HTMLInputElement).value;
-  }
+  // onChangePhrase(event: any): void {
+  //   this.phrase = (event.target as HTMLInputElement).value;
+  // }
 }
