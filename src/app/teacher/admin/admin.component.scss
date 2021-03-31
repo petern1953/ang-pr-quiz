@@ -6,8 +6,3 @@
   background-color: #eee;
   cursor: pointer;
 }
-
-.quizTableColumn.active:before {
-  user-select: none;
-  content: '^';
-}

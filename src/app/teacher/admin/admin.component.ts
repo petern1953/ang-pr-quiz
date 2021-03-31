@@ -3,6 +3,7 @@ import { Quiz } from 'src/app/model/quiz';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { QuizService } from 'src/app/service/quiz.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin',
@@ -18,60 +19,60 @@ export class AdminComponent implements OnInit {
   phrase: string = '';
   searchText: string = '';
 
-  columnKey: string = '';
+  columnKey: string = 'id';
   order: number = 1;
   orderText: string[] = ['DOWN', 'UP'];
 
   quizes: Quiz[] = [
-    {
-      id: 1,
-      title: 'JS',
-      description: 'Array methods',
-      questions: [1, 2, 3, 4],
-      active: true,
-    },
-    {
-      id: 2,
-      title: 'Újratervezés',
-      description:
-        'Szövegek, számok és a Math objektum, dátumok, adatok átstrukturálása',
-      questions: [
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        21,
-        22,
-        23,
-        24,
-        25,
-        26,
-        31,
-        32,
-        33,
-        34,
-        35,
-        36,
-      ],
-      active: true,
-    },
-    {
-      id: 3,
-      title: '3. JavaScript haladó - Modulok és kivételek',
-      description: 'Egyéb újdonságok',
-      questions: [11, 12, 13, 14],
-      active: true,
-    },
+    // {
+    //   id: 1,
+    //   title: 'JS',
+    //   description: 'Array methods',
+    //   questions: [1, 2, 3, 4],
+    //   active: true,
+    // },
+    // {
+    //   id: 2,
+    //   title: 'Újratervezés',
+    //   description:
+    //     'Szövegek, számok és a Math objektum, dátumok, adatok átstrukturálása',
+    //   questions: [
+    //     11,
+    //     12,
+    //     13,
+    //     14,
+    //     15,
+    //     16,
+    //     21,
+    //     22,
+    //     23,
+    //     24,
+    //     25,
+    //     26,
+    //     31,
+    //     32,
+    //     33,
+    //     34,
+    //     35,
+    //     36,
+    //   ],
+    //   active: true,
+    // },
+    // {
+    //   id: 3,
+    //   title: '3. JavaScript haladó - Modulok és kivételek',
+    //   description: 'Egyéb újdonságok',
+    //   questions: [11, 12, 13, 14],
+    //   active: true,
+    // },
   ];
+  quizes$: Observable<Quiz[]> = this.quizService.getAll();
 
-  constructor(
-    private quizService: QuizService
-  ) {}
+  constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
-    this.quizService.getAll();
+    // this.quizes$ = this.quizService.getAll();
+    this.setSearchText();
     this.phraseControl.valueChanges
       .pipe(debounceTime(800))
       .subscribe((newValue) => (this.phrase = newValue));
@@ -120,14 +121,17 @@ export class AdminComponent implements OnInit {
       this.inputField = document.querySelector('input');
       if (this.inputField) this.inputField.value = '';
     }
-    // this.searchText = `Search for / filter | sort by: . . . ${
+    this.setSearchText();
+  }
+
+  setSearchText(): void {
     this.searchText = `Sorted >>> ${
       this.orderText[(this.order + 1) / 2]
-    }WARD <<< by >>> ${this.columnKey} <<< (or choose another one)`;
+    }WARD <<< by >>> ${this.columnKey} <<< (click on column title to change)`;
   }
 
   onDelete(id: number): void {
-    if(confirm('Do you really want to delete quiz ' + id + '?'))
+    if (confirm('Do you really want to delete quiz ' + id + '?'))
       this.quizService.remove(id);
   }
 }

@@ -47,13 +47,15 @@ export class BaseService<T extends { id: number }> {
 
   remove(entity: T | number): Observable<T> {
     let entityId = typeof entity === 'number' ? entity : entity.id;
-    // console.log(`${this.entityName} ${entityId} deleted`);
+    console.log(`to delete: ${this.config.apiUrl}/${this.entityName}/${entityId}`);
     return this.http
       .delete<T>(`${this.config.apiUrl}/${this.entityName}/${entityId}`)
       .pipe(tap((e) => {
         console.log(`${this.entityName} ${entityId} deleted`);
         this.getAll();
-      }));;
+      })
+    )
+      ;
   }
 
 }

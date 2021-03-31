@@ -1,5 +1,3 @@
-import { Question } from "./question";
-
 export class Quiz {
   id: number = 0;
   title: string = '';
@@ -7,7 +5,5 @@ export class Quiz {
   questions: number[] = [];
   active: boolean = true;
 
-  constructor(
-    question: Question
-  ) {}
+  constructor() {}
 }
