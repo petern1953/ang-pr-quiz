@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Quiz } from 'src/app/model/quiz';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { QuizService } from 'src/app/service/quiz.service';
 
 @Component({
   selector: 'app-admin',
@@ -11,9 +12,15 @@ import { debounceTime } from 'rxjs/operators';
 export class AdminComponent implements OnInit {
   actQuiz: number = 0;
   quests: string = '';
+
+  inputField: HTMLInputElement | null = document.querySelector('input');
   phraseControl: FormControl = new FormControl('');
   phrase: string = '';
+  searchText: string = '';
+
   columnKey: string = '';
+  order: number = 1;
+  orderText: string[] = ['DOWN', 'UP'];
 
   quizes: Quiz[] = [
     {
@@ -59,9 +66,12 @@ export class AdminComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(
+    private quizService: QuizService
+  ) {}
 
   ngOnInit(): void {
+    this.quizService.getAll();
     this.phraseControl.valueChanges
       .pipe(debounceTime(800))
       .subscribe((newValue) => (this.phrase = newValue));
@@ -85,4 +95,39 @@ export class AdminComponent implements OnInit {
   // onChangePhrase(event: any): void {
   //   this.phrase = (event.target as HTMLInputElement).value;
   // }
+
+  changeOrder(): void {
+    console.log(this.order);
+    this.order = -this.order;
+  }
+
+  // onColumnSelect(key: string): void {
+  //   this.columnKey = key;
+  //   this.changeOrder();
+  //   this.searchText = 'Search for / filter | sort by ' + `${this.columnKey}`;
+  //   // this.phrase = '';
+  // }
+  onColumnSelect(key: string): void {
+    if (this.columnKey === key) {
+      this.changeOrder();
+    } else {
+      this.columnKey = key;
+      this.order = 1;
+      this.phrase = '';
+
+      // console.log(this.phraseControl.value);
+
+      this.inputField = document.querySelector('input');
+      if (this.inputField) this.inputField.value = '';
+    }
+    // this.searchText = `Search for / filter | sort by: . . . ${
+    this.searchText = `Sorted >>> ${
+      this.orderText[(this.order + 1) / 2]
+    }WARD <<< by >>> ${this.columnKey} <<< (or choose another one)`;
+  }
+
+  onDelete(id: number): void {
+    if(confirm('Do you really want to delete quiz ' + id + '?'))
+      this.quizService.remove(id);
+  }
 }

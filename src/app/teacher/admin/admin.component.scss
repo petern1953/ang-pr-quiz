@@ -1,0 +1,13 @@
+.quizTableColumn {
+  user-select: none;
+}
+
+.quizTableColumn th:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.quizTableColumn.active:before {
+  user-select: none;
+  content: '^';
+}

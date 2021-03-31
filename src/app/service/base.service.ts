@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { ConfigService } from './config.service';
 
 @Injectable({
@@ -44,9 +45,15 @@ export class BaseService<T extends { id: number }> {
   //     .delete<T>(`${this.config.apiUrl}/${this.entityName}/${entityId}`);
   // }
 
-  remove(entity: T): Observable<T> {
+  remove(entity: T | number): Observable<T> {
+    let entityId = typeof entity === 'number' ? entity : entity.id;
+    // console.log(`${this.entityName} ${entityId} deleted`);
     return this.http
-      .delete<T>(`${this.config.apiUrl}/${this.entityName}/${entity.id}`);
+      .delete<T>(`${this.config.apiUrl}/${this.entityName}/${entityId}`)
+      .pipe(tap((e) => {
+        console.log(`${this.entityName} ${entityId} deleted`);
+        this.getAll();
+      }));;
   }
 
 }
