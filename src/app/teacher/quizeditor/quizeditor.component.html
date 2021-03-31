@@ -46,7 +46,11 @@
               <!-- <tr *ngFor="let question of selectedQuiz.questions"> -->
               <tr *ngFor="let q of selectedQuiz.questions as sq">
                 <td>{{sq[sq.indexOf(q)]}}</td>
-                <td class="w-100">{{questions$[sq.indexOf(q)]?.question}}</td>
+                <td class="w-100">
+                  <textarea name="" id="" cols="82" rows="3">
+                    {{questions$[sq.indexOf(q)]?.question}}
+                  </textarea>
+                </td>
                 <td>
                   <div class="btn-group w-100">
                     <button class="btn btn-info">

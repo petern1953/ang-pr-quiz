@@ -43,13 +43,20 @@
       "description": "Egyéb újdonságok",
       "questions": [11, 12, 13, 14],
       "active": true
+    },
+    {
+      "id": 5,
+      "title": "Próba",
+      "description": "Egyéb újdonságok",
+      "questions": [1,2,3],
+      "active": true
     }
     ],
   "questions":
     [
       {"id": 1,
         "question":
-        "Melyik állítás igaz a NoSQL adatbázisokra?<br><br>Válaszd ki az EGYETLEN megfelelő választ!",
+        "Melyik állítás igaz a NoSQL adatbázisokra? Válaszd ki az EGYETLEN megfelelő választ!",
         "answers": [
           {"id": 1, "content": "Drága az üzemeltetése",
             "correct": false},
@@ -65,7 +72,7 @@
       },
       {"id": 2,
         "question":
-        "Mi lesz a konzolon az alábbi kód lefutása után, ha minden async hívás is véget ért?<br><br>&emsp; const thenable = {<br>&emsp; &emsp; age: 30,<br>&emsp; &emsp; then(resolve, reject) {<br>&emsp; &emsp; &emsp; setTimeout(() => resolve(this.age * 2), 1000)<br>&emsp; &emsp; }<br>&emsp; };<br><br>&emsp; async function f() {<br>&emsp; &emsp; const result = await thenable;<br>&emsp; &emsp; console.log(result)<br>&emsp; }<br><br>&emsp; f();<br><br>Válaszd ki az EGYETLEN megfelelő választ!",
+        "Mi lesz a konzolon az alábbi kód lefutása után, ha minden async hívás is véget ért? const thenable = { age: 30, then(resolve, reject) { setTimeout(() => resolve(this.age * 2), 1000) } }; async function f() { const result = await thenable; console.log(result)  }  f(); >Válaszd ki az EGYETLEN megfelelő választ!",
         "answers": [
           {"id": 1, "content": "Error",
             "correct": false},
