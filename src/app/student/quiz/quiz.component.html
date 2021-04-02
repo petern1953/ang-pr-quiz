@@ -1,1 +1,62 @@
-<p>quiz works!</p>
+<div
+  class="container d-flex flex-wrap questions hide"
+  *ngIf="quiz$ | async as quiz"
+>
+  <button
+    (click)="startToFill()"
+    *ngIf="!questionNum"
+    class="col-2 offset-5 btn btn-info"
+  >
+    Click to start
+  </button>
+
+  <!-- <div class="card col-12 hide" *ngFor="let question of questionArray" [id]="'q_'+question.id"> -->
+  <div
+    *ngIf="currentQuestion.id"
+    class="card col-12 hide"
+    [id]="'q_' + currentQuestion.id"
+  >
+    <div class="card-body w-100">
+      <h4 class="card-title">{{ currentQuestion.question }}</h4>
+
+      <div class="form-group ml-5">
+        <input type="checkbox" class="form-check-input" />
+        <label class="form-check-label">{{
+          currentQuestion.answers[0].content
+        }}</label>
+      </div>
+      <div class="form-group ml-5">
+        <input type="checkbox" class="form-check-input" />
+        <label class="form-check-label">{{
+          currentQuestion.answers[1].content
+        }}</label>
+      </div>
+      <div class="form-group ml-5">
+        <input type="checkbox" class="form-check-input" />
+        <label class="form-check-label">{{
+          currentQuestion.answers[2].content
+        }}</label>
+      </div>
+      <div class="row">
+        <div class="col-8 mt-3" style="border: 2px black">
+          <p class="card-text">
+            This question earns {{ currentQuestion.points }} point(s) for you.
+          </p>
+        </div>
+        <div class="col-4">
+          <button (click)="nextQuestion()"
+          *ngIf="questionNum < questionArray.length && questionNum"
+          class="btn btn-info" style="position: absolute; right: 30px;">
+          Next question
+        </button>
+        <div class="col-4">
+          <button (click)="lastQuestion()" routerLink="/"
+          *ngIf="!(questionNum < questionArray.length)"
+          class="btn btn-warning">
+          Back_to_start
+        </button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

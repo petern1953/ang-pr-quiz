@@ -15,6 +15,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { QuestionComponent } from './gadget/question/question.component';
+import { CrisisListComponent } from './crisis-list/crisis-list.component';
+import { HeroListComponent } from './hero-list/hero-list.component';
 
 const routes: Routes = [
   {
@@ -22,7 +24,7 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'quiz',
+    path: 'quiz/:id',
     component: QuizComponent,
   },
   {
@@ -55,6 +57,8 @@ const routes: Routes = [
     FilterPipe,
     SorterPipe,
     QuestionComponent,
+    CrisisListComponent,
+    HeroListComponent,
   ],
   imports: [
     BrowserModule,

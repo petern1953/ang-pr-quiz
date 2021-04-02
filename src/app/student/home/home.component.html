@@ -1,19 +1,49 @@
 <!-- <div class="container"> -->
-  <div class="row">
-    <div class="col-12">
-      <h1 class="text-center">Kvízek</h1>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+<div class="row">
+  <div class="col-12">
+    <h1 class="text-center">Quizes</h1>
+  </div>
+
+  <div class="container d-flex flex-wrap px-0">
+    <h4 class="col-10 mb-0">Fill in your data then choose a quiz-card!</h4>
+    <div class="form-group col-2 mb-0">
+      <label>Your score</label>
+      <p>{{ studentPoints }} points</p>
+    </div>
+
+    <div class="col-12 mt-0 pt-0">
+      <div class="w-100 mx-0">
+        <div class="d-flex flex-wrap flex-row mx-0">
+          <div class="form-group w-50">
+            <label>Enter your name</label>
+            <input [(ngModel)]="studentName" type="text" class="form-control" />
+          </div>
+          <div class="form-group w-50 pl-3">
+            <label>Enter your email</label>
+            <input
+              [(ngModel)]="studentEmail"
+              type="email"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-<!-- </div> -->
+
+  <div
+    class="col-12 col-md-6 col-lg-3 py-3 quiz__card"
+    *ngFor="let item of list$ | async"
+    [routerLink]="'quiz/' + item.id"
+  >
+    <div class="card w-100">
+      <div class="card-body">
+        <h4 class="card-title">{{ item.title }}</h4>
+        <p class="card-text">{{ item.description }}</p>
+        <p class="card-text mt-auto text-left">
+          <b>{{ item.questions.length }}</b> <small> pieces of questions</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

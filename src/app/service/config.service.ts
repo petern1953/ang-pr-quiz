@@ -13,7 +13,8 @@ export interface ITableCol {
   providedIn: 'root',
 })
 export class ConfigService {
-  apiUrl: string = 'http://localhost:3000';
+  apiUrl: string = 'http://localhost:5000';
+  score: number = 0;
 
   studentTableCols: ITableCol[] = [
     {

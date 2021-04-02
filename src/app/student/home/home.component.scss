@@ -1,0 +1,27 @@
+* {
+    transition: all .3s ease-in-out;
+  }
+
+.quiz__card {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    & .card {
+      color: #555;
+      background-color: #00000015;
+    }
+    &:hover {
+        transform: scale(1.1);
+        & .card {
+          color: #044;
+          background-color: #fee;
+          box-shadow: 2px 2px 4px #550;
+        }
+    }
+}
+
+.card-body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}

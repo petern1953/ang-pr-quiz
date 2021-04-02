@@ -8,6 +8,6 @@ export class Question {
   active: boolean = true;
 
   constructor(
-    answer: Answer
+    // answer: Answer
   ) { }
 }
